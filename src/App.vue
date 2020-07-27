@@ -1,18 +1,26 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <navbar></navbar>
+   <router-view></router-view>
+    
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import NavBar from "./components/Navigation.vue";
+
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  components:{
+    'navbar':NavBar
+  },
+  mounted: function(){
+    console.log("App Component mounted!")
+    console.log(process.env.MYMESSAGE)
   }
+
 }
 </script>
 

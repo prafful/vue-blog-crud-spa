@@ -7,12 +7,12 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'ShowBlog',
   data: function(){
-    return {
-      msg: 'Hello World!!!!'
-    }
-  }
+      return {
+          msg:'Show Blogs'
+      }
+  }  
 }
 </script>
 
