@@ -1,8 +1,32 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-  
-  </div>
+  <span>
+    <div class="hello">
+      <h1>{{ msg }}</h1>
+      <form >
+        <label>User Id:</label>
+        <input type="number" v-model.lazy="blog.userId"  required>
+        <br>
+        <label>Title:</label>
+        <input type="text"  v-model.lazy="blog.title"  required>
+        <br>
+        <label >Body:</label>
+        <textarea cols="30" rows="10" v-model.lazy="blog.body" ></textarea>
+        <br>
+         <button v-on:click.prevent="addBlog()">Add Submit</button>
+         &nbsp; &nbsp;
+          <button type="button"  v-on:click="addBlog()">Add Button</button>
+      </form>
+    </div>
+    <div>
+      <h3>Preview:</h3>
+      UserId: {{ blog.userId }}
+      <br>
+      Title: {{ blog.title }}      
+      <br>
+      Body: {{ blog.body }}
+    </div>
+  </span>
+
 </template>
 
 <script>
@@ -10,8 +34,24 @@ export default {
   name: 'AddBlog',
   data: function(){
       return {
-          msg:"Add Blog"
+          msg:"Add Blog",
+          blog:{
+             "userId":0,
+             "title": "",
+             "body": ""
+          }
       }
+ },
+ methods:{
+   addBlog: function(){
+     this.$http.post('http://localhost:3000/blogs', this.blog)
+              .then(res=>{
+                console.log(res)
+                this.$router.push({path:'/show'})
+              }, err=>{
+                console.log(err)
+              })
+   }
  }
 }
 </script>

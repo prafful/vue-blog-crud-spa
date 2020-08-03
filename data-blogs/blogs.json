@@ -23,6 +23,42 @@
       "id": 12,
       "title": "in quibusdam tempore odit est dolorem",
       "body": "itaque id aut magnam\npraesentium quia et ea odit et ea voluptas et\nsapiente quia nihil amet occaecati quia id voluptatem\nincidunt ea est distinctio odio"
+    },
+    {
+      "userId": "1",
+      "title": "My first blog",
+      "body": "Vue js is cool!",
+      "id": 13
+    },
+    {
+      "userId": "3",
+      "title": "My second blog",
+      "body": "Why is the page reloading?",
+      "id": 14
+    },
+    {
+      "userId": "3",
+      "title": "My third title",
+      "body": "Hope it helps!",
+      "id": 15
+    },
+    {
+      "userId": "1",
+      "title": "My fourth",
+      "body": "Should work as well!",
+      "id": 16
+    },
+    {
+      "userId": "1",
+      "title": "sdf",
+      "body": "fsd",
+      "id": 17
+    },
+    {
+      "userId": "3",
+      "title": "fifth blog",
+      "body": "check it out!",
+      "id": 18
     }
   ]
 }

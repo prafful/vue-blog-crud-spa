@@ -1,9 +1,11 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <div v-for="(blog, index) in blogs" v-bind:key="index"> 
-      <h2>{{blog.id}} {{  blog.title  }}</h2>
-      <p> {{ blog.body }} </p>
+    <input type="text" v-model="ss" placeholder="search blogs..."> {{searchtitle}}
+    <div v-for="(blog, index) in searchBlogs" v-bind:key="index"> 
+
+      <h2>{{blog.id}} {{  blog.title | change-to-uppercase }}</h2>
+      <p> {{ blog.body | show100 }} </p>
       <router-link v-bind:to="'/edit/'+blog.id">
         <button>Edit</button> 
       </router-link>
@@ -21,7 +23,8 @@ export default {
   data: function(){
       return {
           msg:'Show Blogs',
-          blogs:[]
+          blogs:[],
+          ss:''
       }
   },
   methods:{
@@ -43,6 +46,16 @@ export default {
               }, err=>{
                 console.log(err)
               })
+    }
+  },
+  computed:{
+    searchBlogs: function(){
+      return this.blogs.filter((blog)=>{
+        //return boolean depending on given statement
+        //console.log(this.ss)
+        //console.log(blog)
+        return blog.title.match(this.ss)
+      })
     }
   },
   created:function(){
