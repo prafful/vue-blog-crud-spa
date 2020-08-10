@@ -18,6 +18,8 @@ export default {
   },
   mounted: function(){
     console.log("App Component mounted!")
+    /* eslint-disable no-debugger */
+    //debugger
     console.log(process.env.MYMESSAGE)
   }
 

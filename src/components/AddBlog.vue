@@ -2,6 +2,13 @@
   <span>
     <div class="hello">
       <h1>{{ msg }}</h1>
+      <div>
+          <span v-if="error.length">
+            <span v-for="(err, index) in error" v-bind:key="index">
+              {{err}}
+            </span>
+          </span>
+      </div>
       <form >
         <label>User Id:</label>
         <input type="number" v-model.lazy="blog.userId"  required>
@@ -39,18 +46,39 @@ export default {
              "userId":0,
              "title": "",
              "body": ""
-          }
+          },
+          error:[]
       }
  },
  methods:{
    addBlog: function(){
-     this.$http.post('http://localhost:3000/blogs', this.blog)
-              .then(res=>{
-                console.log(res)
-                this.$router.push({path:'/show'})
-              }, err=>{
-                console.log(err)
-              })
+     let validBlog = this.validateBlog()
+     if(localStorage){
+       localStorage.setItem("blog"+this.blog.id, JSON.stringify(this.blog))
+     }
+      if(validBlog){
+              this.$http.post('http://localhost:3000/blogs', this.blog)
+                .then(res=>{
+                  console.log(res)
+                  this.$router.push({path:'/show'})
+                }, err=>{
+                  console.log(err)
+                })
+          }
+      }
+
+     ,
+   validateBlog: function(){
+     console.log("Validating....");
+     if(this.blog.id == 0){
+       this.error.push("Id must be non zero")
+       return false
+     }
+     if(this.blog.title === ""){
+       this.error.push("Title cannot be blank!")
+       return false
+     }
+     return true
    }
  }
 }

@@ -4,6 +4,7 @@ import blogRoutes from "./routes/routes";
 import axios from "axios";
 import VueRouter from "vue-router";
 
+Vue.config.productionTip = false 
 //Vue.use(VueResource)
 Vue.use(VueRouter)
 //use new alias for $http so that all $http request mentods can be reused!
